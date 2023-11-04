@@ -1,0 +1,198 @@
+/* common */
+
+@font-face {
+  font-family: "Rubik One";
+  src: local("Roboto-Regular"),
+    url("/fonts/RubikOne.woff2") format("woff2"),
+    url("/fonts/RubikOne.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+/* logo */
+
+.logo {
+  position: fixed;
+  top: -100px;
+  font-family: "Rubik One", sans-serif;
+  font-size: 100px;
+  font-weight: 500;
+  color: white;
+  background-color: black;
+  width: 100%;
+  text-align: center;
+}
+
+.logo__brush {
+  position: fixed;
+  width: 150px;
+  top: 10px
+}
+
+
+/* field */
+
+.field {
+  position: fixed;
+  left: 100px;
+  top: 150px;
+  width: 1300px;
+  height: 550px;
+  border: 10px solid black;
+}
+
+
+/* repeat */
+
+.repeat__btn {
+  position: fixed;
+  bottom: 30px;
+  right: 18px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.repeat__btn:hover {
+  transform: rotate(180deg);
+}
+
+.repeat__btn_img {
+  width: 70px;
+}
+
+
+/* colors */
+
+.colors {
+  position: fixed;
+  flex-direction: column;
+  bottom: 30px;
+  left: 30px;
+}
+
+.colors__color {
+  width: 40px;
+  height: 40px;
+  border: 5px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.colors__color:hover {
+  transform: translateX(10px);
+  transition: 0.3s;
+}
+
+.colors__color:not(:last-child) {
+  margin-bottom: 19px;
+}
+
+.colors__color_1 {
+  background-color: red;
+}
+
+.colors__color_2 {
+  background-color: pink;
+}
+
+.colors__color_3 {
+  background-color: orange;
+}
+
+.colors__color_4 {
+  background-color: yellow;
+}
+
+.colors__color_5 {
+  background-color: green;
+}
+
+.colors__color_6 {
+  background-color: lightblue;
+}
+
+.colors__color_7 {
+  background-color: blue;
+}
+
+.colors__color_8 {
+  background-color: purple;
+}
+
+.colors__color_9 {
+  background-color: black;
+}
+
+.colors__color_10 {
+  background-color: white;
+}
+
+
+/* brushes */
+
+.brushes {
+  flex-direction: column;
+  position: fixed;
+  right: 30px;
+  top: 150px;
+}
+
+.brushes__brush {
+  border: 5px solid black;
+  border-radius: 100%;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.brushes__brush:hover {
+  transform: translateX(-10px);
+  transition: 0.3s;
+}
+
+.brushes__brush:not(:last-child) {
+  margin-bottom: 19px;
+}
+
+.brushes__brush_1 {
+  width: 20px;
+  height: 22px;
+}
+
+.brushes__brush_2 {
+  width: 30px;
+  height: 30px;
+}
+
+.brushes__brush_3 {
+  width: 40px;
+  height: 40px;
+}
+
+.brushes__brush_4 {
+  width: 50px;
+  height: 50px
+}
+
+.brushes__brush_5 {
+  width: 60px;
+  height: 60px;
+}
