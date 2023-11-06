@@ -47,13 +47,21 @@ body {
 
 /* field */
 
-.field {
+.canvas {
   position: fixed;
   left: 100px;
   top: 150px;
   width: 1300px;
   height: 550px;
   border: 10px solid black;
+  overflow: hidden;
+}
+
+.field__cursor {
+  position: absolute;
+  border-radius: 100%;
+  width: 0;
+  height: 0;
 }
 
 
