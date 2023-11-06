@@ -19,8 +19,6 @@ document.querySelectorAll(".colors__color").forEach(elem => {
     document.querySelectorAll(".brushes__brush").forEach(cur_elem => {
       cur_elem.style.backgroundColor = main_color;
     });
-
-    document.querySelector(".field__cursor").style.backgroundColor = main_color;
   });
 });
 
@@ -35,70 +33,50 @@ document.querySelectorAll(".brushes__brush").forEach(elem => {
 
     elem.style.transform = "translateX(-10px)";
 
-    main_size = (Number(elem.classList[1].split("_brush_")[1]) + 1) + "0";
-
-    document.querySelector(".field__cursor").style.height = main_size + "px";
-    document.querySelector(".field__cursor").style.width = main_size + "px";
+    main_size = (Number(elem.classList[1].split("_brush_")[1]) + 1) * 5 + "";
   });
 });
 
 
-// Передвижение курсора
-
-// document.querySelector(".field").addEventListener("mousemove", function(event) {
-//   var x = event.clientX;
-//   var y = event.clientY;
-
-//   var cursor = document.querySelector(".field__cursor");
-//   cursor.style.width = main_size + "px";
-//   cursor.style.height = main_size + "px";
-//   cursor.style.backgroundColor = main_color;
-//   cursor.style.left = (x - main_size / 2 - 105) + "px";
-//   cursor.style.top = (y - main_size / 2 - 155) + "px";
-// });
-
-
 // Рисование
 
-var canvas = document.querySelector(".canvas");
-var canvas_context = canvas.getContext("2d");
-var is_mouse_down = false;
+setInterval(() => {
+  var canvas = document.querySelector(".canvas");
+  var canvas_context = canvas.getContext("2d");
+  var is_mouse_down = false;
 
-canvas.addEventListener("mousedown", function() {
-  is_mouse_down = true;
-});
+  canvas.addEventListener("mousedown", function() {
+    is_mouse_down = true;
+  });
 
-canvas.addEventListener("mouseup", function() {
-  is_mouse_down = false;
-});
+  canvas.addEventListener("mouseup", function() {
+    is_mouse_down = false;
+  });
 
-canvas.addEventListener("mousemove", function(event) {
-  var x = event.offsetX;
-  var y = event.offsetY;
+  canvas.addEventListener("mousemove", function(event) {
+    var x = event.offsetX;
+    var y = event.offsetY;
+
+    canvas_context.fillStyle = main_color;
+
+    if (is_mouse_down) {
+      canvas_context.beginPath();
+      canvas_context.arc(x, y, Number(main_size), 0, Math.PI * 2);
+      canvas_context.fill();
+    };
+  });
+}, 100);
+
+
+// Обновление поля для рисования
+
+document.querySelector(".repeat__btn").addEventListener("click", function() {
+  document.querySelector("body").removeChild(document.querySelector(".canvas"));
+
+  var new_canvas = document.createElement("canvas");
+  new_canvas.classList.add("canvas");
+  new_canvas.width = "1300";
+  new_canvas.height = "550";
   
-  canvas_context.fillStyle = "black";
-
-  canvas_context.beginPath();
-  canvas_context.arc(x/4.1, y/4.1, 1, 0, Math.PI * 2);
-  canvas_context.fill();
-
-  // if (((x > (100 + main_size / 2 + 10))&&(y > (150 + main_size / 2 + 10)))&&((x < (1400 - main_size / 2 + 10))&&(y < (700 - main_size / 2 + 10)))) {
-  //   var point = document.createElement("div");
-  //   point.style.position = "fixed";
-  //   point.style.borderRadius = "100%";
-  //   point.style.left = (x - main_size / 2) + "px";
-  //   point.style.top = (y - main_size / 2) + "px";
-  //   point.style.width = main_size + "px";
-  //   point.style.height = main_size + "px";
-  //   point.style.backgroundColor = main_color;
-    
-  //   document.querySelector(".field").appendChild(point);
-  // };
+  document.querySelector("body").appendChild(new_canvas);
 });
-
-
-// // Обновление поля для рисования
-
-// document.querySelector(".repeat__btn").addEventListener("click", function() {
-//   document.querySelector(".field").innerHTML = `<div class="field__cursor"></div>`;
-// });
